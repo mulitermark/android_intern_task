@@ -1,5 +1,6 @@
 package com.example.androidinterntask
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -52,10 +53,14 @@ class MainActivity : AppCompatActivity() {
         itemAdapter.deleteItems()
 
         val array = response.getJSONArray("playlist") //?
-        for(i in 0 until array.length()) {
+        for (i in 0 until array.length()) {
             val obj = array.getJSONObject(i)
-            val title = if (title == null) "None" else obj.get("title").toString()
-            val item = Item(obj.get("userName").toString(),obj.get("email").toString(),title)
+            val userName = obj.optString("userName", "None")
+            val email = obj.optString("email", "None")
+            val title = obj.optString("title", "None")
+            val color: Int = Color.parseColor(obj.optString("theme", "#D3D3D3"))
+            val item = Item(userName, email, title, color)
+
             //TODO Place all data in the item object
             //TODO Picture
             itemAdapter.addItem(item)

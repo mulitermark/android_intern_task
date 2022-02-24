@@ -1,10 +1,11 @@
 package com.example.androidinterntask
 
+
+import android.graphics.PorterDuff
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ScrollView
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_info.view.*
@@ -31,6 +32,10 @@ class ItemAdapter(
             text_view_username.text = "Username: ".plus(currentItem.username)
             text_view_email.text = "Email: ".plus(currentItem.email)
             text_view_title.text = "Title: ".plus(currentItem.title)
+            item_constraint_layout.background.setColorFilter(
+                currentItem.color,
+                PorterDuff.Mode.DARKEN
+            ) //This method is depracated, but using BlendModeColorFilter requires API 29
             //TODO Picture
             //TODO Needs a listener in the future
         }
@@ -45,10 +50,9 @@ class ItemAdapter(
         notifyItemInserted(items.size - 1)
     }
 
-    fun deleteItems(){
+    fun deleteItems() {
         items.clear()
         notifyDataSetChanged()
-        Log.d("deleteItems", "Items should have been deleted")
     }
 
 
