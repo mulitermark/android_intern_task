@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                 processResponse(response)
             },
             {
-                // error
+                //TODO error
             }
         )
 
@@ -59,7 +59,8 @@ class MainActivity : AppCompatActivity() {
             val email = obj.optString("email", "None")
             val title = obj.optString("title", "None")
             val color: Int = Color.parseColor(obj.optString("theme", "#D3D3D3"))
-            val item = Item(userName, email, title, color)
+            val url = obj.optString("avatarURL")
+            val item = Item(userName, email, title, color, url)
 
             //TODO Place all data in the item object
             //TODO Picture

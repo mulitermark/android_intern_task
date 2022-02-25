@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_info.view.*
 
 class ItemAdapter(
@@ -36,6 +37,9 @@ class ItemAdapter(
                 currentItem.color,
                 PorterDuff.Mode.DARKEN
             ) //This method is depracated, but using BlendModeColorFilter requires API 29
+            if (currentItem.url.isNotEmpty()) {
+                Glide.with(this).load(currentItem.url).into(imageView)
+            }
             //TODO Picture
             //TODO Needs a listener in the future
         }
