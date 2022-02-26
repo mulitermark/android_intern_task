@@ -1,6 +1,7 @@
 package com.example.androidinterntask
 
 
+import android.content.Intent
 import android.graphics.PorterDuff
 import android.util.Log
 import android.view.LayoutInflater
@@ -38,11 +39,24 @@ class ItemAdapter(
                 PorterDuff.Mode.DARKEN
             ) //This method is depracated, but using BlendModeColorFilter requires API 29
             if (currentItem.url.isNotEmpty()) {
-                Glide.with(this).load(currentItem.url).into(imageView)
+                Glide.with(this).load(currentItem.url).placeholder(android.R.drawable.ic_delete)
+                    .error(android.R.drawable.ic_delete).into(imageView)
             }
-            //TODO Picture
-            //TODO Needs a listener in the future
         }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, DescriptionActivity::class.java)
+            intent.putExtra("username", currentItem.username)
+                .putExtra("email", currentItem.email)
+                .putExtra("title", currentItem.title)
+                .putExtra("url", currentItem.url)
+                .putExtra("created", currentItem.created)
+                .putExtra("description", currentItem.description)
+                .putExtra("guid", currentItem.guid)
+            //TODO this doesn't seem correct
+            holder.itemView.context.startActivity(intent)
+        }
+
     }
 
     override fun getItemCount(): Int {

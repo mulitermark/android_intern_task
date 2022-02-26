@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         recycler_view.layoutManager = LinearLayoutManager(this)
 
         // val buttonNewData = findViewById<Button>(R.id.buttonNewData)
+        apiCall()
         buttonNewData.setOnClickListener {
             apiCall()
         }
@@ -60,10 +61,13 @@ class MainActivity : AppCompatActivity() {
             val title = obj.optString("title", "None")
             val color: Int = Color.parseColor(obj.optString("theme", "#D3D3D3"))
             val url = obj.optString("avatarURL")
-            val item = Item(userName, email, title, color, url)
+            val created = obj.optString("created")
+            val guid = obj.optString("guid")
+            val description = obj.optString("description")
+
+            val item = Item(userName, email, title, color, url, created, description, guid)
 
             //TODO Place all data in the item object
-            //TODO Picture
             itemAdapter.addItem(item)
         }
     }
