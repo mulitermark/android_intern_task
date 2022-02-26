@@ -53,6 +53,7 @@ class ItemAdapter(
                 .putExtra("created", currentItem.created)
                 .putExtra("description", currentItem.description)
                 .putExtra("guid", currentItem.guid)
+                .putExtra("color", currentItem.color)
             //TODO this doesn't seem correct
             holder.itemView.context.startActivity(intent)
         }

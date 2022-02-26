@@ -1,10 +1,13 @@
 package com.example.androidinterntask
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_description.*
+import kotlinx.android.synthetic.main.item_info.view.*
 
 class DescriptionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,6 +15,9 @@ class DescriptionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_description)
 
         loadData()
+        image_view_exit_activity.setOnClickListener {
+            finish()
+        }
     }
 
     private fun loadData() {
@@ -22,6 +28,7 @@ class DescriptionActivity : AppCompatActivity() {
                     .load(url)
                     .placeholder(android.R.drawable.ic_delete)
                     .error(android.R.drawable.ic_delete)
+                    .fallback(android.R.drawable.ic_delete)
                     .into(image_view_detailed_avatar)
             }
         } else Log.e("URL loading in details",
@@ -49,6 +56,13 @@ class DescriptionActivity : AppCompatActivity() {
         val description: String? = intent.getStringExtra("description")
         if(description != null){
             text_view_detailed_description.text = description
+        }
+        val color: Int? = intent.getIntExtra("color",Color.parseColor("#D3D3D3"))
+        if(color != null){
+            constraint_layout_detailed.background.setColorFilter(
+                color,
+                PorterDuff.Mode.DARKEN
+            )
         }
 
     }
