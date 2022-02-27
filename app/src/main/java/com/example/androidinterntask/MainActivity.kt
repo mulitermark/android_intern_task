@@ -10,24 +10,27 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.androidinterntask.databinding.ActivityMainBinding
 import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var itemAdapter: ItemAdapter
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        itemAdapter = ItemAdapter(mutableListOf())
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        recycler_view.adapter = itemAdapter
-        recycler_view.layoutManager = LinearLayoutManager(this)
+        itemAdapter = ItemAdapter(mutableListOf())
+        binding.recyclerView.adapter = itemAdapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
         // val buttonNewData = findViewById<Button>(R.id.buttonNewData)
         apiCall()
-        buttonNewData.setOnClickListener {
+        binding.buttonNewData.setOnClickListener {
             apiCall()
         }
     }
