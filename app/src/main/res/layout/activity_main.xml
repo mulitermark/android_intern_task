@@ -6,18 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-<!--    <Button-->
-<!--        android:id="@+id/buttonNewData"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_marginLeft="5dp"-->
-<!--        android:layout_marginRight="5dp"-->
-<!--        android:layout_height="60dp"-->
-<!--        android:text="Query new data"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="0dp"
@@ -32,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:background="@color/cardview_light_background"
+        app:backgroundTint="@color/default_grey"
         android:layout_margin="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

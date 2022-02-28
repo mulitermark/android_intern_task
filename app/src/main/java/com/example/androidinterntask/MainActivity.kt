@@ -3,9 +3,7 @@ package com.example.androidinterntask
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
@@ -28,35 +26,42 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView.adapter = itemAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // val buttonNewData = findViewById<Button>(R.id.buttonNewData)
-        apiCall()
+        val endpointUrl = "https://android-intern-homework.vercel.app/api"
+        apiCall(endpointUrl)
         binding.buttonNewData.setOnClickListener {
-            apiCall()
+            apiCall(endpointUrl)
         }
     }
 
-    private fun apiCall() {
-        val endpoint = "https://android-intern-homework.vercel.app/api"
+    /**
+     * Calls an API using the given [url] parameter, and handles the data.
+     * Passes the data to [processResponse].
+     */
+    private fun apiCall(url: String) {
         val queue = Volley.newRequestQueue(this)
         val jsonObjectRequest = JsonObjectRequest(
-            Request.Method.GET, endpoint, null,
+            Request.Method.GET, url, null,
             { response ->
                 processResponse(response)
             },
             {
-                //TODO error
+                Log.e("JsonObjectRequest", "JSON object request failed.")
             }
         )
 
         queue.add(jsonObjectRequest)
     }
 
+    /**
+     * Handles the [response] passed as a parameter.
+     * Loads the data into an [Item] object and hands it to an [ItemAdapter].
+     */
     private fun processResponse(response: JSONObject?) {
         if (response == null) return
 
         itemAdapter.deleteItems()
 
-        val array = response.getJSONArray("playlist") //?
+        val array = response.getJSONArray("playlist")
         for (i in 0 until array.length()) {
             val obj = array.getJSONObject(i)
             val userName = obj.optString("userName", "None")
@@ -66,11 +71,11 @@ class MainActivity : AppCompatActivity() {
             val url = obj.optString("avatarURL")
             val created = obj.optString("created")
             val guid = obj.optString("guid")
-            val description = obj.optString("description")
+            var description = obj.optString("description", "None")
+            description = if (description == "null" || description == "") "-" else description
 
             val item = Item(userName, email, title, color, url, created, description, guid)
 
-            //TODO Place all data in the item object
             itemAdapter.addItem(item)
         }
     }

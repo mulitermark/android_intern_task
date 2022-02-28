@@ -14,10 +14,21 @@
         android:layout_height="130dp"
         android:layout_marginTop="40dp"
         android:background="@color/cardview_dark_background"
+        android:contentDescription="@string/content_description_avatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_view_exit_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/content_description_exit_button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@android:drawable/ic_delete" />
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
     <TextView
         android:id="@+id/text_view_detailed_name"
@@ -28,7 +39,6 @@
         android:paddingHorizontal="10dp"
 
         android:textSize="25sp"
-        android:text="TextView"
         android:textColor="@color/white"
         android:textAlignment="center"
         android:background="@color/cardview_dark_background"
@@ -54,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="Title:"/>
+                android:text="@string/title"/>
 
             <TextView
                 android:id="@+id/text_view_detailed_title"
@@ -70,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="Email:"/>
+                android:text="@string/email"/>
 
             <TextView
                 android:id="@+id/text_view_detailed_email"
@@ -86,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="Created:"/>
+                android:text="@string/created"/>
 
             <TextView
                 android:id="@+id/text_view_detailed_created"
@@ -102,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="Guid:"/>
+                android:text="@string/guid"/>
 
             <TextView
                 android:id="@+id/text_view_detailed_guid"
@@ -120,7 +130,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="Description:"/>
+                android:text="@string/desc"/>
 
             <TextView
                 android:id="@+id/text_view_detailed_description"
@@ -130,15 +140,5 @@
                 android:textSize="20sp"/>
         </TableRow>
     </TableLayout>
-
-    <ImageView
-        android:id="@+id/image_view_exit_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Android Intern Task</string>
+    <string name="username">"Name: "</string>
+    <string name="title">"Title: "</string>
+    <string name="email">"Email: "</string>
+    <string name="created">"Created: "</string>
+    <string name="guid">"Guid: "</string>
+    <string name="desc">"Description: "</string>
+    <string name="content_description_avatar">The avatar picture of the given profile.</string>
+    <string name="content_description_exit_button">The exit button, which is shaped like an \"X\".</string>
 </resources>

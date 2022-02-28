@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/item_constraint_layout"
     android:layout_width="match_parent"
     android:layout_height="141dp"
@@ -12,10 +11,10 @@
         android:layout_width="101dp"
         android:layout_height="101dp"
         android:layout_marginStart="14dp"
+        android:contentDescription="@string/content_description_avatar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_delete"
         android:background="@color/cardview_dark_background"/>
 
     <LinearLayout
@@ -34,36 +33,42 @@
             android:id="@+id/text_view_username"
             android:layout_width="match_parent"
             android:layout_height="43dp"
-            android:paddingStart="10dp"
-            android:text="Name:"
+            android:paddingHorizontal="10dp"
+            android:text="@string/username"
             android:gravity="center_vertical"
             android:background="@color/cardview_dark_background"
             android:textColor="@color/cardview_light_background"
             android:layout_marginBottom="1dp"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
 
         <TextView
             android:id="@+id/text_view_email"
             android:layout_width="match_parent"
             android:layout_height="43dp"
-            android:paddingStart="10dp"
-            android:text="Email:"
+            android:paddingHorizontal="10dp"
+            android:text="@string/email"
             android:gravity="center_vertical"
             android:background="@color/cardview_dark_background"
             android:textColor="@color/cardview_light_background"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
 
         <TextView
             android:id="@+id/text_view_title"
             android:layout_width="match_parent"
             android:layout_height="43dp"
-            android:paddingStart="10dp"
-            android:text="Title:"
+            android:paddingHorizontal="10dp"
+            android:text="@string/title"
             android:gravity="center_vertical"
             android:background="@color/cardview_dark_background"
             android:textColor="@color/cardview_light_background"
             android:layout_marginTop="1dp"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
